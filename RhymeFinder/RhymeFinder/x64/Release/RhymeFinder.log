@@ -1,0 +1,7 @@
+﻿  main.cpp
+  RhymeFinder.cpp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 622 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  RhymeFinder.vcxproj -> C:\Users\jackj\Desktop\Personal\Programming\C++\Rhyme_Program\RhymeFinder\x64\Release\RhymeFinder.exe
