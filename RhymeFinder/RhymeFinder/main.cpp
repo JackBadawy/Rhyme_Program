@@ -48,7 +48,7 @@ int main() {
                 std::cout << "No rhymes found.\n";
             }
             else {
-                std::cout << "Found " << rhymes.size() << " rhymes:\n";
+                std::cout << "Perfect Rhymes:\n";
                 for (size_t i = 0; i < rhymes.size(); ++i) {
                     std::cout << rhymes[i];
                     if (i < rhymes.size() - 1) std::cout << ", ";

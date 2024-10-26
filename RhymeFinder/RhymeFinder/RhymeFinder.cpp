@@ -5,6 +5,7 @@
 #include <fstream>
 #include <sstream>
 #include <stdexcept>
+#include <cctype>
 
 namespace {
     std::string normalizeWord(const std::string& word) {
@@ -22,6 +23,20 @@ namespace {
         size_t last = str.find_last_not_of(" \t\r\n");
         return str.substr(first, (last - first + 1));
     }
+}
+
+std::string RhymeFinder::cleanAndFormatWord(const std::string& word) const {
+
+    std::string cleaned = normalizeWord(word);
+    cleaned = trim(cleaned);
+
+    std::transform(cleaned.begin(), cleaned.end(), cleaned.begin(), ::tolower);
+
+    if (!cleaned.empty()) {
+        cleaned[0] = std::toupper(cleaned[0]);
+    }
+
+    return cleaned;
 }
 
 RhymeFinder::RhymeFinder() {
@@ -71,16 +86,17 @@ bool RhymeFinder::loadRhymeMapFromFile(const std::string& filename) {
 std::vector<std::string> RhymeFinder::findRhymes(std::string word) {
     try {
         std::cout << "Finding rhymes for: " << word << "\n";
-        std::transform(word.begin(), word.end(), word.begin(), ::toupper);
+        std::string upperWord = word;
+        std::transform(upperWord.begin(), upperWord.end(), upperWord.begin(), ::toupper);
         std::string normalizedInput = normalizeWord(word);
 
         for (const auto& entry : rhymeMap) {
             const auto& words = entry.second;
-            if (std::find(words.begin(), words.end(), word) != words.end()) {
+            if (std::find(words.begin(), words.end(), upperWord) != words.end()) {
                 std::vector<std::string> rhymes;
                 for (const auto& rhyme : words) {
                     if (normalizeWord(rhyme) != normalizedInput) {
-                        rhymes.push_back(rhyme);
+                        rhymes.push_back(cleanAndFormatWord(rhyme));
                     }
                 }
                 return rhymes;
