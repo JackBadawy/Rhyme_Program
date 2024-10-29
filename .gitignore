@@ -1,5 +1,6 @@
 # Generated Data Files
 **/rhyme_map.txt
+**/dictionary_raw.txt
 **/rhyme_train.txt
 **/rhyme_val.txt
 **/rhyme_negative.txt
