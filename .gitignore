@@ -1,84 +1,16 @@
-# Project-specific generated data files
-**/*_map.txt
-**/dictionary_raw.txt
-**/rhyme_*.txt
-
-# Python
-# Byte-compiled / optimized files
+# Python essentials
 **/__pycache__/
-**/*.py[cod]
-**/*$py.class
-**/*.so
-
-# Python Distribution / packaging
-.Python
-**/build/
-**/develop-eggs/
-**/dist/
-**/downloads/
-**/eggs/
-**/.eggs/
-**/lib/
-**/lib64/
-**/parts/
-**/sdist/
-**/var/
-**/wheels/
-**/share/
-**/*.egg-info/
-**/.installed.cfg
-**/*.egg
-MANIFEST
-
-# Python Virtual Environments
 **/venv/
-**/ENV/
-**/.env
-Python_rhyme_pair_gen/rhyme_env/
+**/lib/
 
-# C++ Build and IDE files
-# Visual Studio files
-**/.vs/
-**/x64/
+# C++ build essentials
 **/Debug/
 **/Release/
-**/*.user
-**/*.suo
-**/*.sdf
-**/*.opensdf
-**/*.db
-**/*.opendb
+**/x64/
 
-# C++ Build artifacts
-**/*.pdb
-**/*.ilk
-**/*.log
-**/*.tlog
-**/*.lastbuildstate
-**/*.idb
-**/*.exp
-**/*.lib
-**/*.dll
-**/*.exe
-**/ipch/
-**/[Bb]in/
-**/[Oo]bj/
-
-# IDE and Editor files
+# IDE
+**/.vs/
 **/.vscode/
-**/.idea/
-**/*.swp
-**/*.swo
 
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# Data directories
-**/data/
-**/Scripts/
+# Generated data
+**/rhyme_map.txt
