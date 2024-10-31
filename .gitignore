@@ -1,16 +1,72 @@
-# Python essentials
-**/__pycache__/
-**/venv/
-**/lib/
+# Generated Data Files
+**/rhyme_map.txt
+**/dictionary_raw.txt
+**/rhyme_train.txt
+**/rhyme_val.txt
+**/rhyme_negative.txt
 
-# C++ build essentials
+# Python
+**/__pycache__/
+**/lib/
+**/rhyme_env/
+**/share/
+**/data/
+**/Scripts/
+**/*.py[cod]
+**/*$py.class
+**/*.so
+**/.Python
+**/env/
+**/dist/
+**/downloads/
+**/eggs/
+**/.eggs/
+**/*.egg-info/
+**/.installed.cfg
+**/.pyvenv.cfg
+**/*.egg
+
+# Python Virtual Environment
+**/venv/
+**/ENV/
+Python_rhyme_pair_gen/rhyme_env/
+
+# Visual Studio/C++
+**/x64/
 **/Debug/
 **/Release/
-**/x64/
-
-# IDE
 **/.vs/
-**/.vscode/
+**/*.user
+**/*.suo
+**/*.sdf
+**/*.opensdf
+**/*.db
+**/*.opendb
+**/*.pdb
+**/*.ilk
+**/*.log
+**/*.tlog
+**/*.lastbuildstate
+**/*.idb
+**/*.exp
+**/*.lib
+**/*.dll
+**/*.exe
+**/ipch/
+**/[Bb]in/
+**/[Oo]bj/
 
-# Generated data
-**/rhyme_map.txt
+# IDE settings
+**/.vscode/
+**/*.swp
+**/*.swo
+**/.idea/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

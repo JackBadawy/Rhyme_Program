@@ -1,0 +1,10 @@
+{
+  "base_word": "light",
+  "candidates": [
+    ["bright", 0.9],
+    ["site", 0.85],
+    ["flight", 0.9],
+    ["night", 0.9],
+    ["kite", 0.8]
+  ]
+}
