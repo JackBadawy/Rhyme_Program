@@ -22,7 +22,6 @@
 **/.eggs/
 **/*.egg-info/
 **/.installed.cfg
-**/pyvenv.cfg
 **/*.egg
 
 # Python Virtual Environment
