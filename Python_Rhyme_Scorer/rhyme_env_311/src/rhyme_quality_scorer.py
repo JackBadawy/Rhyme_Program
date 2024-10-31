@@ -36,7 +36,7 @@ class RhymeDataset(Dataset):
             combined = torch.cat([vec1, vec2])
             return combined, torch.tensor([score], dtype=torch.float32)
         except KeyError:
-            # Fallback for words not in vocabulary
+            
             return torch.zeros(50, dtype=torch.float32), torch.tensor([0.5], dtype=torch.float32)
 
 class PyTorchRhymeScorer:
@@ -47,11 +47,11 @@ class PyTorchRhymeScorer:
         self.word_vectors = api.load('glove-twitter-25')
         print("Word embeddings loaded")
         
-        # Initialize model
+        
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.model = RhymeEmbeddingNet().to(self.device)
         
-        # Load or train the model
+        
         try:
             self.model.load_state_dict(torch.load('rhyme_model.pth'))
             self.model.eval()
@@ -61,13 +61,13 @@ class PyTorchRhymeScorer:
             
     def _train_model(self, epochs=10):
         """Train the neural network on sample rhyming data"""
-        # Sample training data (would be better with real annotated data)
+        
         training_pairs = [
             ("light", "bright", 0.9),
             ("light", "site", 0.7),
             ("blue", "true", 0.9),
             ("blue", "zoo", 0.6),
-            # Add more training pairs...
+            
         ]
         
         dataset = RhymeDataset(training_pairs, self.word_vectors)
@@ -81,19 +81,27 @@ class PyTorchRhymeScorer:
             total_loss = 0
             for X, y in dataloader:
                 X, y = X.to(self.device), y.to(self.device)
-                
                 optimizer.zero_grad()
                 outputs = self.model(X)
                 loss = criterion(outputs, y)
                 loss.backward()
                 optimizer.step()
-                
                 total_loss += loss.item()
             
             print(f"Epoch {epoch+1}, Loss: {total_loss/len(dataloader):.4f}")
             
         torch.save(self.model.state_dict(), 'rhyme_model.pth')
         self.model.eval()
+    def train_on_gutenberg(self, num_poems=2, epochs=3):
+        """Train the model on Project Gutenberg poetry data"""
+        from gutenberg_rhyme_trainer import train_on_gutenberg_poetry
+        self.model = train_on_gutenberg_poetry(
+            self.model,
+            self.word_vectors,
+            num_poems=num_poems,
+            epochs=epochs
+        )
+        torch.save(self.model.state_dict(), 'rhyme_model_gutenberg.pth')
 
     def get_combined_score(self, base_word, rhyme_word, phonetic_score):
         """Calculate combined score using neural network"""
@@ -105,7 +113,6 @@ class PyTorchRhymeScorer:
             with torch.no_grad():
                 semantic_score = self.model(combined).item()
             
-            # Combine neural network score with phonetic score
             combined_score = (0.7 * phonetic_score) + (0.3 * semantic_score)
             return combined_score
             

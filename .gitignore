@@ -8,6 +8,8 @@
 # Python
 **/__pycache__/
 **/lib/
+**/rhyme_env/
+**/share/
 **/data/
 **/Scripts/
 **/*.py[cod]
@@ -21,6 +23,7 @@
 **/.eggs/
 **/*.egg-info/
 **/.installed.cfg
+**/.pyvenv.cfg
 **/*.egg
 
 # Python Virtual Environment
